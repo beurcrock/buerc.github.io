@@ -1,13 +1,12 @@
 # ------------------------------
 
-baseURL = "https://hugo.happyfou.com/"
+baseURL = "https://yuanfoudev.github.io"
 languageCode = "en"
 #copyright = "Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved."
 author = "yuanfou"
 DefaultContentLanguage = "en"
 paginate = 10   #20230831 Control the number of pages per pagination
 ignoreErrors = ["error-remote-getjson"]
-enableInlineShortcodes = true
 
 # ------------------------------
 
@@ -26,6 +25,8 @@ theme = "paper"
   bio = '未独立开发者|INFJ-A 欢迎来到我的博客'
 
 # ------------------------------
+
+
 
 # 配置杂项misc
 disableHLJS = true
@@ -96,3 +97,11 @@ ignoreFiles = ["exampleSite"] #忽略示例站点资源
     name = "归档"
     url = "/archives/"
     weight = 10
+
+
+
+# 配置系列
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
