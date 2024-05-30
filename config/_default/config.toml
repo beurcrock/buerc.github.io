@@ -1,4 +1,109 @@
-baseURL = "https://yuanfoudev.github.io"
-languageCode = "en-us"
-title = "Noiton-Hugo"
+# ------------------------------
+
+baseURL = "https://yuanfoudev.github.io/"
+languageCode = "en"
+
+author = "yuanfou"
+DefaultContentLanguage = "zh"
+paginate = 10   #20230831 Control the number of pages per pagination
+ignoreErrors = ["error-remote-getjson"]
+enableInlineShortcodes = true
+
+# ------------------------------
+
+
+title = "元否"
 theme = "paper"
+
+
+[params]
+  color = 'linen'
+  twitter = 'yuanfoudev'
+  
+  #github = 'yuanfoudev'
+  
+  rss = true
+
+  avatar = 'https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6e23f4c-91f8-4665-8e2e-15eb24476d61%2Flogo.png?table=block&id=991a6272-a390-4ec7-8b93-1feb08e5054d&spaceId=6f061d15-8f2e-42d0-a148-068fb412b305&width=600&userId=5191ad45-3310-4476-a47f-6c90dded5c8a&cache=v2'
+  name = '元否'
+  bio = '未独立开发者|INFJ-A 欢迎来到我的博客'
+
+# ------------------------------
+
+# 配置杂项misc
+disableHLJS = true
+math = true  
+enableEmoji = true  #配置 emoji
+ignoreFiles = ["exampleSite"] #忽略示例站点资源
+
+
+# 正确配置 markup 解析设置，防止原始 html标签 被过滤。
+# ------------------------------
+
+[markup]
+  defaultMarkdownHandler = 'goldmark'
+  [asciidocExt]
+    backend = 'html5'
+    failureLevel = 'fatal'
+    noHeaderOrFooter = true
+    preserveTOC = false
+    safeMode = 'unsafe'
+    sectionNumbers = false
+    trace = false
+    verbose = false
+    workingFolderCurrent = false
+    [markup.asciidocExt.attributes]  
+  [markup.goldmark]
+    [goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [goldmark.parser]
+        autoHeadingID = true
+        autoHeadingIDType = 'github'
+        [goldmark.parser.attribute]
+          block = false
+          title = true
+ # whether to use HTML tags directly in the document
+ # 是否在文档中直接使用 HTML 标签
+      [markup.goldmark.renderer]
+        unsafe = true
+        hardWraps = false
+        xhtml = false
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+# ------------------------------
+
+
+
+# 配置网站菜单
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 8
+  [[menu.main]]
+    identifier = "friends"
+    name = "友链"
+    url = "/friends/"
+    weight = 9
+  [[menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "/archives/"
+    weight = 10
+
+
+
+# 配置系列
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
