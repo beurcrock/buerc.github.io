@@ -1,6 +1,6 @@
 # ------------------------------
 
-baseURL = "https://yuanfoudev.github.io"
+baseURL = "https://hugo.happyfou.com"
 languageCode = "en"
 #copyright = "Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved."
 author = "yuanfou"
