@@ -1,6 +1,6 @@
 # ------------------------------
 
-baseURL = "https://hugo.happyfou.com"
+baseURL = "https://hugo.happyfou.com/"
 languageCode = "en"
 
 author = "yuanfou"
@@ -19,11 +19,8 @@ theme = "paper"
 [params]
   color = 'linen'
   twitter = 'yuanfoudev'
-  
-  #github = 'yuanfoudev'
-  
+  github = 'yuanfoudev'
   rss = true
-
   avatar = 'https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6e23f4c-91f8-4665-8e2e-15eb24476d61%2Flogo.png?table=block&id=991a6272-a390-4ec7-8b93-1feb08e5054d&spaceId=6f061d15-8f2e-42d0-a148-068fb412b305&width=600&userId=5191ad45-3310-4476-a47f-6c90dded5c8a&cache=v2'
   name = '元否'
   bio = '未独立开发者|INFJ-A 欢迎来到我的博客'
