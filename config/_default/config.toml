@@ -12,7 +12,7 @@ enableInlineShortcodes = true
 # ------------------------------
 
 
-title = "元否"
+title = "元否の部落格"
 theme = "paper"
 
 
@@ -96,11 +96,3 @@ ignoreFiles = ["exampleSite"] #忽略示例站点资源
     name = "归档"
     url = "/archives/"
     weight = 10
-
-
-
-# 配置系列
-[taxonomies]
-category = "categories"
-tag = "tags"
-series = "series"
