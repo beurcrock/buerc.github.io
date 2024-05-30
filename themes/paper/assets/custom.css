@@ -1,1 +1,47 @@
 /* Place custom css here. */
+
+/*20230821添加 维护list，添加缩略图类，新增两端对齐*/
+.summarysctnbox{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; 
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 1em;
+  }
+
+.ctntext{
+  display: flex;
+  flex-direction: column;
+  gap:8px;
+}
+
+/*20230815 将摘要作为自定义 CSS*/
+.summaryspar{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3; /* 设置最大行数 */  
+    margin-bottom: 0;
+    flex:0 0 auto;
+    min-width: 70%;
+}
+
+.rightimg{
+  margin: 0px;
+  flex: 0 0 30%; /* 占据 30% 的宽度，不会扩展或收缩 */
+  max-width: 30%; /* 设置最大宽度为 30% */
+  height: 120px;
+  object-fit:cover;
+  border-radius: 12px;
+}
+
+.articleimg{
+  object-fit:cover;
+}
+
+/*2023023 新增 archives盒子*/
+.archivesitem{
+  font-size: 1.2rem;
+}

@@ -2,21 +2,29 @@
 
 <article>
   <header class="mb-16">
+   
     <h1 class="!my-0 pb-2.5">{{ .Title }}</h1>
 
     {{ if ne .Type "page" }}
     <div class="text-sm antialiased opacity-60">
+      <!--20230814 插入文章创建时间-->
       {{ if .Date }}
       <time>{{ .Date | time.Format ":date_medium" }}</time>
-      {{ end }}<!---->
-      {{ $single_author := or .Params.Author site.Author.name }}
-      <!---->
-      {{ if $single_author }}
-      <span class="mx-1">&middot;</span>
-      <span>{{ $single_author }}</span>
       {{ end }}
+      
+      <!--20230814 插入作者信息-->
+      {{ if .Params.authors }}
+      <span class="mx-1">&middot;</span>
+      <span>{{ .Params.authors }}</span>
+      {{ end }}
+
     </div>
+      <!--20230816 移动插入文章图片位置-->
+      {{ if .Params.featuredImage }}
+      <img class="articleimg" src="{{ .Params.featuredImage }}">
+      {{ end }}
     {{ end }}
+     
   </header>
 
   <section>{{ .Content }}</section>
@@ -35,7 +43,6 @@
   {{ end }}
 
   <!-- Post Nav -->
-  {{ if not site.Params.disablePostNavigation }}<!---->
   {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}<!---->
   {{ if and (gt (len $pages) 1) (in $pages . ) }}
   <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
@@ -54,7 +61,6 @@
     >
     {{ end }}
   </nav>
-  {{ end }}<!---->
   {{ end }}
 
   <!-- Disqus -->
@@ -99,31 +105,6 @@
       ).appendChild(gc);
     })();
   </script>
-  {{ end }}
-
-  <!-- mermaid -->
-  {{- partial "mermaid.html" . -}}
-
-  <!-- giscus comment -->
-  {{ if and site.Params.giscus.repo (not (eq .Params.comments false)) }}
-  <div class="giscus mt-24"></div>
-  <script
-    src="https://giscus.app/client.js"
-    data-repo="{{ site.Params.giscus.repo }}"
-    data-repo-id="{{ site.Params.giscus.repoId }}"
-    data-category="{{ site.Params.giscus.category }}"
-    data-category-id="{{ site.Params.giscus.categoryId }}"
-    data-mapping="{{ site.Params.giscus.mapping | default (print `pathname`) }}"
-    data-strict="{{ site.Params.giscus.strict | default (print `1`) }}"
-    data-reactions-enabled="{{ site.Params.giscus.reactionsEnabled | default (print `0`) }}"
-    data-emit-metadata="{{ site.Params.giscus.emitMetadata | default (print `0`) }}"
-    data-input-position="{{ site.Params.giscus.inputPosition | default (print `top`) }}"
-    data-theme="{{ site.Params.giscus.theme | default (print `light`) }}"
-    data-lang="{{ site.Params.giscus.lang | default (print `en`) }}"
-    data-loading="{{ site.Params.giscus.loading | default (print `lazy`) }}"
-    crossorigin="anonymous"
-    async
-  ></script>
   {{ end }}
 </article>
 

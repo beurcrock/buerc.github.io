@@ -1,0 +1,31 @@
+{{ define "main" }}
+<!--标题-->
+<header class="mb-16">
+    <h1 class="!my-0 pb-2.5">{{ .Title }}</h1>
+</header>
+
+<!--查找除了类型为"extra"的文章-->
+{{ $articles := where .Site.RegularPages.ByDate.Reverse "Params.type" "!=" "extra" }}
+
+<!-- 获取所有文章的年份列表 -->
+
+{{ $pagesgroup := $articles.GroupByDate "2006"}}
+
+{{ range $pagesgroup }}
+<!-- 按年份分组文章 -->
+  <h2>{{ .Key }}</h2>
+  <ul>
+    {{ range .Pages }}
+      <li class="archivesitem">
+        <span class="mr-5">{{ .Date.Format "01-02" }}</span>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}
+
+
+
+
+<!--配合define "main"-->
+{{ end }}

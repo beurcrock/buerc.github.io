@@ -5,14 +5,12 @@
     name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no"
   />
-
   <!-- Title -->
   <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}</title>
 
   <!-- Meta -->
   <meta name="theme-color" />
 
-  <!-- Author -->
   {{ $site_author := or site.Author.name site.Params.name site.Title }}
   <!---->
   {{ if eq .Kind "page" }}
@@ -27,7 +25,7 @@
   <meta name="author" content="{{ $site_author }}" />
   {{ end }}
 
-  <!-- CSS & JS -->
+  <!-- Styles & Scripts -->
   {{ $main := resources.Get "main.css" }}
   <!---->
   {{ $custom := resources.Get "custom.css" }}
@@ -35,28 +33,6 @@
   {{ $css := slice $main $custom | resources.Concat "main.css" | minify }}
   <link rel="preload stylesheet" as="style" href="{{ $css.Permalink }}" />
 
-  <!-- Dark Icon -->
-  {{ $dark_icon := "theme.png" }}
-  <!---->
-  {{ if site.Params.monoDarkIcon }}{{ $dark_icon = "theme.svg" }}{{ end }}
-  <!---->
-  <link rel="preload" as="image" href="{{ $dark_icon | absURL }}" />
-
-  <!-- Avatar -->
-  {{ $avatar_url := $.Scratch.Get "avatar_url" }}
-  <!---->
-  {{ if $avatar_url }}
-  <link rel="preload" as="image" href="{{ $avatar_url }}" />
-  {{ end }}
-  <!---->
-
-  <!-- Social List -->
-  {{ range $.Scratch.Get "social_list" }}
-  <link rel="preload" as="image" href="{{ printf `%s.svg` . | absURL }}" />
-  {{ end }}
-  <!---->
-
-  <!-- Highlight JS -->
   {{ if and .IsPage (not site.Params.disableHLJS) }}
   <script
     defer
@@ -65,8 +41,24 @@
   ></script>
   {{ end }}
 
-  <!-- Math -->
-  {{ if or .Params.math site.Params.math }}
+  <!-- Preload -->
+  {{ $dark_icon := "theme.png" }} {{ if site.Params.monoDarkIcon }} {{
+  $dark_icon = "theme.svg" }} {{ end }}
+  <link rel="preload" as="image" href="{{ $dark_icon | absURL }}" />
+
+  {{ $avatar_url := $.Scratch.Get "avatar_url" }}
+  <!---->
+  {{ if $avatar_url }}
+  <link rel="preload" as="image" href="{{ $avatar_url }}" />
+  {{ end }}
+  <!---->
+
+  {{ range $.Scratch.Get "social_list" }}
+  <link rel="preload" as="image" href="{{ printf `%s.svg` . | absURL }}" />
+  {{ end }}
+  <!---->
+
+  {{ if or .Params.math .Site.Params.math }}
   <!---->
   {{ partial "math.html" . }}
   <!---->
@@ -74,22 +66,12 @@
   <!---->
 
   <!-- Favicon -->
-  <link rel="icon" href="{{ site.Params.favicon | default `favicon.ico` | absURL }}" />
-  <link rel="apple-touch-icon" href="{{ site.Params.appleTouchIcon | default `apple-touch-icon.png` | absURL }}" />
+  <link rel="icon" href="{{`favicon.ico` | absURL}}"/>  <!--{{ `favicon.ico` | absURL }}-->
+  <link rel="apple-touch-icon" href="{{ `apple-touch-icon.png` | absURL }}" />
 
   <!-- Generator -->
   {{ hugo.Generator }}
 
-  <!-- Production -->
-  {{ if or hugo.IsProduction (eq site.Params.env "production") }}
-  <!---->
-  {{ template "_internal/google_analytics.html" . }}
-  <!---->
-  {{ template "_internal/schema.html" . }}
-  <!---->
-  {{ template "_internal/opengraph.html" . }}
-  <!---->
-  {{ template "_internal/twitter_cards.html" . }}
   <!-- RSS -->
   {{ range .AlternativeOutputFormats }}
   <link
@@ -99,8 +81,17 @@
     title="{{ site.Title }}"
   />
   {{ end }}
-  <!-- Canonical -->
-  <link rel="canonical" href="{{ .Permalink }}" />
-  {{ end }}
+
+  <!-- Misc -->
+  {{ if or hugo.IsProduction (eq site.Params.env "production") }}
   <!---->
+  {{ template "_internal/google_analytics.html" . }}
+  <!---->
+  {{ template "_internal/opengraph.html" . }}
+  <!---->
+  {{ template "_internal/schema.html" . }}
+  <!---->
+  {{ template "_internal/twitter_cards.html" . }}
+  <!---->
+  {{ end }}
 </head>

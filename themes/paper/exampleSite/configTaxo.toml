@@ -5,6 +5,7 @@ enableInlineShortcodes = true
 category = "categories"
 tag = "tags"
 series = "series"
+author = "authors"
 
 [privacy]
 
