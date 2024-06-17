@@ -1,9 +1,9 @@
 # ------------------------------
 
-baseURL = "https://hugo.happyfou.com"
+baseURL = "buerc.github.io"
 languageCode = "en"
 #copyright = "Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved."
-author = "yuanfou"
+author = "buerc"
 DefaultContentLanguage = "en"
 paginate = 10   #20230831 Control the number of pages per pagination
 ignoreErrors = ["error-remote-getjson"]
@@ -11,18 +11,18 @@ ignoreErrors = ["error-remote-getjson"]
 # ------------------------------
 
 
-title = "元否の部落格"
+title = "buerc"
 theme = "paper"
 
 
 [params]
   color = 'linen'
-  twitter = 'yuanfoudev'
-  github = 'yuanfoudev'
+  twitter = 'buerc'
+  github = 'buerc'
   rss = true
-  avatar = 'dearlaywer@gmail.com'
+  avatar = 'houjijiang@gmail.com'
   name = '元否'
-  bio = '未独立开发者|INFJ-A 欢迎来到我的博客'
+  bio = '一个优质信息源爱好者'
 
 # ------------------------------
 
