@@ -1,6 +1,6 @@
 # ------------------------------
 
-baseURL = "buerc.github.io"
+baseURL = "https://buerc.github.io"
 languageCode = "en"
 #copyright = "Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved."
 author = "buerc"
@@ -21,7 +21,7 @@ theme = "paper"
   github = 'buerc'
   rss = true
   avatar = 'houjijiang@gmail.com'
-  name = '元否'
+  name = 'buerc'
   bio = '一个优质信息源爱好者'
 
 # ------------------------------
